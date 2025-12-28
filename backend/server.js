@@ -1,6 +1,7 @@
 const http = require('http');
 const WebSocket = require('ws');
 
+// Server erstellen
 const server = http.createServer();
 const wss = new WebSocket.Server({ server });
 
@@ -16,6 +17,9 @@ wss.on('connection', ws => {
     });
 });
 
-server.listen(3000, () => {
-    console.log('Server läuft auf http://localhost:3000');
+// Render gibt den Port über process.env.PORT vor
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, () => {
+    console.log(`Server läuft auf http://localhost:${PORT}`);
 });
